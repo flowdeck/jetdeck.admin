@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import Dropdown from "./components/forms/Dropdown/Dropdown"; // Assuming you saved the component in Dropdown.tsx
 
-function App() {
-  const [count, setCount] = useState(0)
+// Define the DropdownOption type
+type DropdownOption = {
+  label: string;
+  value: string;
+};
+
+const App: React.FC = () => {
+  // Sample dropdown data (you can replace this with your actual data)
+  const dropdownOptions: DropdownOption[] = [
+    { label: "Option 1", value: "option-1" },
+    { label: "Option 2", value: "option-2" },
+    { label: "Option 3", value: "option-3" },
+  ];
+
+  const handleDropdownSelect = (value: string) => {
+    console.log("Selected value:", value);
+    // Do something with the selected value
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <h1>
+        <span style={{ color: "#2BA5FF" }}>jetdeck</span>.admin
+      </h1>
+      <Dropdown
+        options={dropdownOptions}
+        onSelect={handleDropdownSelect}
+        placeholder="Choose an item"
+      />
+    </div>
+  );
+};
 
-export default App
+export default App;
